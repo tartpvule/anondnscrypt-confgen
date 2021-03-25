@@ -2,7 +2,7 @@
  * @file make-metadata.js
  * @author tartpvule
  * @license MIT
- * @version 1
+ * @version 2
  *
  * Usage:
  *  node make-metadata.js file.md
@@ -46,6 +46,12 @@ for (let entry_name in md) {
 	}
 	if (CONFIG_NO_IPV6 &&
 		stamp.addr.startsWith('[')
+	) {
+		continue;
+	}
+
+	if (entry.description.includes('incompatible with DNS anonymization') ||
+		entry.description.includes('incompatible with anonymization')
 	) {
 		continue;
 	}
